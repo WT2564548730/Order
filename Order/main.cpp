@@ -1,15 +1,32 @@
-//
-//  main.cpp
-//  Order
-//
-//  Created by W20181105881 on 2019/8/27.
-//  Copyright © 2019 W20181105881. All rights reserved.
-//
-
 #include <iostream>
+using namespace std;
 
-int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
-    return 0;
+void Order(int s[],int n);
+
+int main() {
+    int n;
+    cin>>n;
+    int p[n];
+    for(int i=0;i<n;i++)
+        cin>>p[i];
+    
+    Order(p,n);
+    for(int i=0;i<n-1;i++)
+        cout<<p[i]<<" ";
+    cout<<p[n-1]<<endl;
+}
+
+void Order(int s[],int n){
+    for(int i=0;i<n;i++){
+        int min=s[i];
+        int minnum=i;
+        for(int j=i+1;j<n;j++){
+            if(s[j]<min){
+                min=s[j];
+                minnum=j;
+            }
+        }
+        s[minnum]=s[i];
+        s[i]=min;
+    }
 }
